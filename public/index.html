@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bhasha AI — Doubt Solver</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">भ</div>
+      <div>
+        <h1>Bhasha AI</h1>
+        <p class="tagline">Understand the why, not just the answer.</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <div class="lang-toggle" role="radiogroup" aria-label="Language">
+        <button type="button" class="lang-btn active" data-lang="en" role="radio" aria-checked="true">English</button>
+        <button type="button" class="lang-btn" data-lang="hi" role="radio" aria-checked="false">हिन्दी</button>
+      </div>
+      <span id="learner-chip" class="learner-chip hidden"></span>
+    </div>
+  </header>
+
+  <div id="api-warning" class="banner hidden" role="alert"></div>
+
+  <!-- Step 1: nickname -->
+  <section id="welcome" class="welcome card hidden">
+    <h2>Welcome! What should we call you?</h2>
+    <p class="muted">Just a nickname — no email, password or personal details needed. Your learning history is saved so we can pick up where you left off.</p>
+    <form id="nickname-form" class="row">
+      <input id="nickname" maxlength="30" placeholder="e.g. Aarav, StarCoder, Physics_fan" autocomplete="off" required>
+      <button class="btn primary" type="submit">Start learning</button>
+    </form>
+    <p id="nickname-error" class="error-text" role="alert"></p>
+  </section>
+
+  <main id="app" class="layout hidden">
+    <section class="main-col">
+      <!-- Step 2: doubt setup -->
+      <div id="setup" class="card">
+        <h2>What's your doubt today?</h2>
+        <form id="doubt-form">
+          <div class="grid-2">
+            <label>Subject
+              <input id="subject" maxlength="60" placeholder="e.g. Physics" required>
+            </label>
+            <label>Topic
+              <input id="topic" maxlength="100" placeholder="e.g. Newton's laws of motion" required>
+            </label>
+          </div>
+          <label>Your doubt
+            <textarea id="doubt" rows="3" maxlength="1000" placeholder="e.g. If I push a wall and it doesn't move, is there any force?" required></textarea>
+          </label>
+          <div class="starters">
+            <span class="muted small">Try a starter:</span>
+            <div id="starter-list" class="chips"></div>
+          </div>
+          <p id="setup-error" class="error-text" role="alert"></p>
+          <button class="btn primary" id="start-btn" type="submit">Begin guided session →</button>
+        </form>
+      </div>
+
+      <!-- Step 3: conversation -->
+      <div id="chat-card" class="card chat-card hidden">
+        <div class="chat-head">
+          <div>
+            <div class="eyebrow" id="chat-subject"></div>
+            <h2 id="chat-topic"></h2>
+            <p class="muted small" id="chat-doubt"></p>
+          </div>
+          <button class="btn ghost" id="new-session" type="button" title="Starts a new doubt; your history is kept">＋ New doubt</button>
+        </div>
+        <div id="chat" class="chat" aria-live="polite"></div>
+        <div id="loading" class="loading hidden" aria-live="polite">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span id="loading-text">Bhasha is thinking about your reasoning…</span>
+        </div>
+        <form id="reply-form" class="reply">
+          <textarea id="reply" rows="2" maxlength="1500" placeholder="Explain your thinking… (Enter to send, Shift+Enter for new line)"></textarea>
+          <button class="btn primary" id="send-btn" type="submit">Send</button>
+        </form>
+        <p id="chat-error" class="error-text" role="alert"></p>
+      </div>
+    </section>
+
+    <aside class="side-col">
+      <div class="card">
+        <h3>Your progress</h3>
+        <div class="stats" id="stats"></div>
+        <div id="topic-list" class="topic-list"></div>
+      </div>
+      <div class="card">
+        <h3>Misconceptions we've worked on</h3>
+        <p class="muted small">Mistakes are how we learn. These help Bhasha adapt to you.</p>
+        <ul id="misconception-list" class="misconception-list"></ul>
+      </div>
+      <button class="btn link small" id="switch-learner" type="button">Not you? Switch learner</button>
+    </aside>
+  </main>
+
+  <footer class="footer muted small">Powered by Sarvam-105B · Your nickname and learning history are stored on this server only.</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

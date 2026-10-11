@@ -1,0 +1,21 @@
+{
+  "name": "bhasha-doubt-solver",
+  "version": "1.0.0",
+  "description": "Bhasha AI - Socratic multilingual doubt solver powered by Sarvam-105B",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check public/script.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^18.0.7",
+    "express": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
