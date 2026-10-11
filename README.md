@@ -2,6 +2,8 @@
 
 > Understand the why, not just the answer.
 
+🚀 **Live Demo:** [Try Bhasha AI](https://bhasha-doubt-solver-tg0x.onrender.com/)
+
 A Socratic, multilingual (English / Hindi) doubt solver built for Sarvam Campus '26. Instead of handing out answers, Bhasha AI asks the student to explain their thinking first, analyses that reasoning, flags misconceptions kindly, and guides them one question at a time. It runs on **Sarvam-105B** through Sarvam's Chat Completions V1 API.
 
 ## Features
